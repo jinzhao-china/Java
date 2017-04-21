@@ -2,12 +2,12 @@
 # Life Cycle of a Servlet
 servlet生命周期的核心就是3个方法:init()，service() 和 destroy()。它们由每个servlet实现，并在特定时间被服务器调用。
 * servlet的生命周期的初始阶段，Web容器通过调用init()方法创建一个servlet实例，然后传入一个实现了javax.servlet.servletconfig接口的对象,此对象允许servlet访问web.xml中的初始参数。
-* 初始化后，servlet实例开始等待客户端请求。每个请求都在其单独的线程中运行。Web容器调用servlet的service()方法。service()会判断请求的类型并调用适当的方法来处理请求。servlet的开发人员必须为这些方法提供一个实现。如果请求一个servlet未实现的方法，则调用父类的方法，但这通常会导致返回错误给请求者。
+* 初始化后，servlet实例开始等待客户端请求。每个请求都在其单独的线程中运行。Web容器调用servlet的service()，该方法会判断请求的类型并调用适当的方法来处理请求。servlet的开发人员必须为这些方法提供一个实现。如果请求一个servlet未实现的方法，则调用父类的方法，但这通常会导致返回错误给请求者。
 * 最后，当Servlet的服务结束后，Web容器调用destroy()方法来中止。destroy()方法 跟init()，在一个servlet的生命周期中，只会被调用一次。
-以下是这些方法的典型用户场景。
-假设用户请求访问URL。
-浏览器然后为该URL生成HTTP请求。
-然后将此请求发送到相应的服务器。
+## 以下是这些方法的典型用户场景。
+1. 假设用户请求访问URL。
+* 浏览器然后为该URL生成HTTP请求。
+* 然后将此请求发送到相应的服务器。
 HTTP请求由web服务器接收并转发到servlet容器。
 容器将此请求映射到特定servlet。
 servlet被动态检索并加载到容器的地址空间中。
